@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "htbin://data//dtds//hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+        package="ht.conversationtracker">
+
+    <joined-subclass name="com.hitorro.conversationtracker.Conversation" table="Conversation" extends="com.hitorro.base.objects.Document">
+        <meta attribute="class-description">
+            Conversation Object
+        </meta>
+        <key column="system_id"/>
+
+        <property name="topicUrl" type="string" not-null="true" length="1024"/>
+        <property name="synopsis" type="string" not-null="true" length="1024"/>
+        <property name="firstPostDate" type="timestamp"/>
+        <property name="lastPostDate" type="timestamp"/>
+
+        <property name="fromDate" type="timestamp"/>
+        <property name="toDate" type="timestamp"/>
+
+        <property name="conversationRank" type="double" not-null="true"/>
+        <property name="detailsGuid" type="string" not-null="true" length="20"/>
+
+        <many-to-one name="primaryPersonality" class="com.hitorro.base.objects.User" column="primaryPersonality"
+                     lazy="false"
+                     fetch="select"/>
+        <set name="personalities" table="conversation_user" lazy="true">
+            <key column="conversation_id"/>
+            <many-to-many column="user_id" class="com.hitorro.base.objects.User"/>
+        </set>
+        <set name="posts" table="conversation_post">
+            <key column="conversation_id"/>
+            <many-to-many column="post_id" class="com.hitorro.base.objects.Post"/>
+        </set>
+        <property name="originalAuthor" type="string"/>
+    </joined-subclass>
+</hibernate-mapping>

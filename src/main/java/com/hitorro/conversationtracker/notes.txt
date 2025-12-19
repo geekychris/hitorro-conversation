@@ -1,0 +1,7 @@
+Query by author name
+====================
+
+Notes for Dan and steve on different query types
+
+
+solve the GenericJDBC exception on the more link

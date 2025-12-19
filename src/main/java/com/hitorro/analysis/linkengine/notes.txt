@@ -1,0 +1,31 @@
+
+
+Things to fix
+=============
+
+
+shift from sql to hql query
+
+select c.guid as contguid from VersionableObject s, Content c, sysobject_contents sc where s.modifiedDate > ? and s.modifiedDate < ? and s.system_id= sc.system_id and c.content_id = sc.content_id and c.content_id in (select system_id from content_category cc where cc.domain=\"docparts\" and cc.value=\"reflinksnew\")
+
+select c.guid as contguid from Post s, Content c, Category cat where s.contents.id = c.id and c.categories.id in (select cat from Category cat where cat.domain=\"docparts\" and cat.value=\"reflinksnew\")
+
+
+select cat from Category cat where cat.domain='docparts' and cat.value='reflinksnew'
+select cat from Content c where cat.domain='docparts' and cat.value='reflinksnew'
+
+
+hql select c1.id, c1.categories.domain, c1.categories.value from Content as c1;
+
+ 
+select cc.guid from Post post join post.contents cc where post.degree <= 2 and cc.id in
+(select c1.id from Content as c1 where c1.categories.domain='docparts' and c1.categories.value='reflinksnew' );
+
+
+select count(cc.guid) from Post post join post.contents cc where post.degree = 1 and cc.id in
+(select c1.id from Content as c1 where c1.categories.domain='docparts' and c1.categories.value='reflinksnew' );
+
+
+URL cleanup and removal
+-----------------------
+normalize http://www.scobelizer.com and http://scobelizer.com

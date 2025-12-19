@@ -1,0 +1,209 @@
+<html jwcid="@HTShell" title="Conversation Ranker">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+    <title>Conversation Ranker</title>
+    <link href="../public/reset-fonts-grids-min.css" rel="stylesheet" type="text/css">
+    <style media="screen" type="text/css">
+        body {
+            background-color: #fff;
+            background: #fff url(../public/images/header_bar.gif) repeat-x top left;
+        }
+
+        #doc2 {
+            background-color: #fff;
+        }
+
+        a {
+            color: #0761a6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        h2 {
+            font: bold 152% / 152% georgia, serif;
+            color: #34568E;
+            margin: 0 0 1em;
+        }
+
+        .lead {
+            background-color: #fafafa;
+            margin-bottom: 1em;
+        }
+
+        .personality {
+            position: relative;
+            padding-left: 100px;
+            min-height: 100px;
+            margin: 0 0 2.5em;
+        }
+
+        .personality img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .personality h2 {
+            margin-bottom: 0;
+        }
+
+        .personality h4 {
+            font-weight: bold;
+            color: #c0c2c5;
+        }
+
+        ul li {
+            margin: 0 0 0.5em;
+        }
+
+        .otherposts {
+            margin: 0.5em 0 1em 3em
+        }
+
+        .posts li, .otherposts li {
+            font-size: 92%;
+            margin-bottom: 0.5em;
+        }
+
+        .post {
+            padding: 1em 0 2em 1em;
+        }
+
+        .post h2 {
+            margin-bottom: 0.25em;
+        }
+
+        .personality h2 a {
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .post h2 a {
+            font-size: 92%;
+        }
+
+        .post h3, .personality h3 {
+            font: italic 107% / 122% Arial;
+            color: #8a8a8a;
+            margin-bottom: 0.2em;
+        }
+
+        .post ul {
+            margin: 1em 0 0 1em
+        }
+
+        #hd {
+            position: relative;
+            height: 81px;
+            background: #fff url(../public/images/header_bar.gif) repeat-x top left;
+        }
+
+        #hd #logo {
+            position: absolute;
+            top: 11px;
+            left: 0;
+        }
+
+        #hd #HiTorro {
+            position: absolute;
+            right: 0;
+            top: 54px;
+        }
+
+        #bd {
+            padding-top: 1em;
+        }
+
+        #ft {
+            color: #336da0;
+            border-top: 1px dotted #eaeaea;
+            margin: 2em 0 0;
+            padding: 1em 1em 0;
+            text-align: center;
+            font-size: 92%;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="yui-t7" id="doc2">
+
+    <!-- Header.... -->
+    <div id="hd">
+        <a href="Front.htm" title="ConversationTracker Home"><img alt="ConversationTracker" height="59"
+                                                                  id="logo"
+                                                                  src="../public/images/convtracker_logo.gif" width="254"></a>
+        <a href="http://www.HiTorro.net" target="_blank" title="HiTorro.net website"><img alt="a HiTorro Original Production"
+                                                                                          height="18"
+                                                                                          id="HiTorro" src="../public/images/hitorro_logo.gif"
+                                                                                          width="163"></a>
+    </div>
+
+
+    <!-- Body.... -->
+    <h1>Conversation Ranking</h1>
+
+    <form jwcid="@Form" success="listener:doFormAction">
+        Choose a ranker:
+        <span jwcid="@HTSelect" listValues="ognl:step.rankerChoices" value="ognl:step.currentRankerName"/>
+        <button action="ognl:RerankAction" jwcid="@HTButton" label="Rerank"/>
+    </form>
+    <br/>
+
+    <div id="bd">
+
+
+        <div id="yui-main">
+            <div class="yui-gc">
+                <div class="yui-u first">
+
+                    <div class="personality">
+
+                        <ul class="recentconversations">
+                                <span element="li" jwcid="@For" source="ognl:step.conversations"
+                                      value="ognl:curDisplay" volatile="true">
+                                    <a jwcid="@DirectLink" listener="listener:toConversation"
+                                       parameters="ognl:curDisplay.conversationGuid"><span jwcid="@Insert"
+                                                                                           value="ognl:curDisplay.title"/></a>
+                                    <p><span jwcid="@Insert" value="ognl:curDisplay.topicPost.shortBody"/></p>
+
+
+                                   <ul class="otherposts">
+                                    <span element="li" jwcid="@For" source="ognl:curDisplay.otherPosts"
+                                          value="ognl:curPostDisplay" volatile="true">
+                                        <h4><a href="ognl:curPostDisplay.url" jwcid="@Any"><span jwcid="@Insert"
+                                                                                                 value="ognl:curPostDisplay.title"/></a>
+                                            | (<span jwcid="@Insert" value="ognl:curPostDisplay.rank"/>) | <span
+                                                    jwcid="@Insert" value="ognl:curPostDisplay.forumName"/></h4>
+                                    </span>
+                                   </ul>
+
+                                </span>
+                        </ul>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div id="ft">
+        <p>&copy; 2006 HiTorro. </p>
+    </div>
+
+</div>
+<script src="../public/hitorrojs/yui/yahoo.js" type="text/javascript"></script>
+<script src="../public/hitorrojs/yui/connection.js" type="text/javascript"></script>
+<script src="../public/hitorrojs/yui/dom.js" type="text/javascript"></script>
+<script src="../public/hitorrojs/yui/event.js" type="text/javascript"></script>
+<script src="../public/hitorrojs/yui/animation.js" type="text/javascript"></script>
+<script src="../public/hitorrojs/photoFeeds.js" type="text/javascript"></script>
+</body>
+</html>
