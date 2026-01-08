@@ -43,11 +43,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 
 @TypeClassMetaInfo(shortTypeName = TypeClassMetaInfo.MemoryConversation,
         isView = false,

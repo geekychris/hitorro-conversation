@@ -26,11 +26,7 @@ import org.hibernate.type.Type;
 
 import java.util.Iterator;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public class PostHashToForumNameAdapter implements HibernateQueryResultObjectAdapter<PostHashToForumName> {
     public PostHashToForumName map(Iterator iter, Type[] types, String[] aliases) {
         Object o[] = (Object[]) iter.next();

@@ -23,11 +23,7 @@ package com.hitorro.analysis.linkengine.compute;
 
 import com.hitorro.util.core.string.Fmt;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public class PostHashToForumName {
     private long m_hash;
     private String m_link;

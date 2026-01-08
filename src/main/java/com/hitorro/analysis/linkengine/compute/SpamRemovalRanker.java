@@ -29,11 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public class SpamRemovalRanker implements ConversationRanker {
     public static final DoubleProperty MaxSingleSourceTLDThreshold =
             new DoubleProperty("conversationtracker.conversation.maxtldthreshold",

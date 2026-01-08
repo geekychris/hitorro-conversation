@@ -26,11 +26,7 @@ import gnu.trove.map.hash.TLongByteHashMap;
 import com.hitorro.util.core.queue.PriorityQueue;
 import com.hitorro.util.core.string.Fmt;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public class DocIdToFreqSet {
     private PriorityQueue<DocIdToFreq> m_pq;
     private TLongByteHashMap m_map = new TLongByteHashMap();

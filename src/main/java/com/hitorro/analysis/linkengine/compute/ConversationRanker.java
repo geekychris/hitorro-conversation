@@ -25,11 +25,7 @@ import com.hitorro.conversationtracker.Conversation;
 
 import java.util.List;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public interface ConversationRanker {
     /**
      * @return Short name of the ranker function.

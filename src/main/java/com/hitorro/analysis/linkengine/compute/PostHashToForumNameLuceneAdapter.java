@@ -25,11 +25,7 @@ import com.hitorro.obj.core.LuceneResultIteratorAdapter;
 import com.hitorro.util.core.string.StringUtil;
 import org.apache.lucene.document.Document;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public class PostHashToForumNameLuceneAdapter implements LuceneResultIteratorAdapter<PostHashToForumName> {
     public PostHashToForumName map(float score, Document doc) {
         String guid = doc.get("guid");

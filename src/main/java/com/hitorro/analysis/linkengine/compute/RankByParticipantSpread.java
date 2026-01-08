@@ -27,11 +27,7 @@ import com.hitorro.util.urlparser.UrlCollectionStats;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- */
+
 public class RankByParticipantSpread implements ConversationRanker {
     public static final String Key = "ParticipantSpread";
 

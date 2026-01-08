@@ -27,10 +27,7 @@ import com.hitorro.util.core.Console;
 import java.util.*;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved.
- * <p/>
- * User: chris
- * <p/>
+
  * Context that keeps track of all the available ranker functions for conversations.
  */
 public class ConversationRankerContext {
