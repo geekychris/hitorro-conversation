@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine.tuple;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 13, 2005 Time: 3:40:20 PM
  * <p/>
  * The tuple writer has to deal with writing out tuples, however it has to hold back the previous tuple till it figures
  * back if the current tuple has the same doc id.  If it does, it has to mark in the previous that the following tuple

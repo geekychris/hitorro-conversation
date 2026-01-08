@@ -33,9 +33,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Iterator;
 
-/**
- * <p/>
- */
+
 public class LinkEngineIndexerUtil {
     public static String QueryContentForNesLinksSinkHql = "select cc.guid from Post post join post.contents cc where post.degree <= :a and post.modifiedDate > :b and post.modifiedDate < :c and cc.id in " +
             "(select c1.id from Content as c1 left join c1.categories as cat where cat.domain='docparts' and cat.value='reflinksnew')";

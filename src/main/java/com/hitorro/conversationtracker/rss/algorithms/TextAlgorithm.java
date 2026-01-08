@@ -49,7 +49,6 @@ import java.io.IOException;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 4:57:55 PM
  */
 public class TextAlgorithm implements RssAlgorithm {
     public String getName() {

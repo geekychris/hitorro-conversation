@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 12, 2005 Time: 7:07:02 PM
  */
 public class BookmarksAlgorithm implements RssAlgorithm {
     public String getName() {

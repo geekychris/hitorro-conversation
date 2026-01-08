@@ -28,7 +28,6 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 23, 2005 Time: 8:27:11 AM
  * <p/>
  * Adapter iterator that takes a LinkSet iterator and provides an iterator of Links
  */

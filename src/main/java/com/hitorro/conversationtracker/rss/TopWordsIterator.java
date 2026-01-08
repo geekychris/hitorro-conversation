@@ -32,7 +32,6 @@ import java.util.List;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 2:44:20 PM
  */
 public class TopWordsIterator implements Iterator<RssItemInterface> {
     private Iterator<RssItemInterface> iter;

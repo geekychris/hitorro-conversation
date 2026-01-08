@@ -29,9 +29,7 @@ import com.hitorro.util.io.resourcecache.basefile.BaseFileResourcePropertyKey;
 
 import java.io.IOException;
 
-/**
- * <p/>
- */
+
 public class LinkEngineSingletonMapper extends BaseMapper<Object, LinkEngine> {
     public static final String LinkEngineSingletonCacheEventKey = "LinkEngineSingletonCache";
     public static final BaseFileResourcePropertyKey PropKey =

@@ -26,7 +26,6 @@ import com.hitorro.basedms.xml.RssItemInterface;
 import java.util.Iterator;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 15, 2005 Time: 11:44:32 AM To change
  * this template use File | Settings | File Templates.
  */
 public class IteratorRequest {

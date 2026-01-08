@@ -26,7 +26,6 @@ import com.hitorro.util.core.GenericKeyValue;
 import java.util.Comparator;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Mar 29, 2005 Time: 10:03:02 AM
  */
 class RankComparitor implements Comparator<GenericKeyValue<String, Double>> {
     public int compare(GenericKeyValue<String, Double> genericKeyValue, GenericKeyValue<String, Double> genericKeyValue1) {

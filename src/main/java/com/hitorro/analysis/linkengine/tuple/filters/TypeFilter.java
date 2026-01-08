@@ -25,7 +25,6 @@ import com.hitorro.analysis.linkengine.tuple.LinkTupleReader;
 import com.hitorro.analysis.linkengine.tuple.TupleReaderFilter;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 11:19:58 AM
  */
 public class TypeFilter extends TupleReaderFilter {
     private byte m_type;

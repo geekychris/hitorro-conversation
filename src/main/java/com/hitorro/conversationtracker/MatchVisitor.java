@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Mar 29, 2005 Time: 10:02:44 AM
  */
 class MatchVisitor implements TermTupleSetVisitor {
     private double m_val;

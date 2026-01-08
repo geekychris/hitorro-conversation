@@ -55,7 +55,6 @@ import java.util.Date;
 import java.util.Iterator;
 
 /**
- * <p/>
  * Create a segment from a stream of edges.  In the process we will be adding new document ids to the system, thus
  * causing the following components to go through a revision:
  * <p/>

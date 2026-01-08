@@ -22,7 +22,6 @@
 package com.hitorro.analysis.linkengine.tuple;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 11:27:25 AM
  */
 public abstract class LogicCollectionTupleReaderFilter extends TupleReaderFilter {
 }

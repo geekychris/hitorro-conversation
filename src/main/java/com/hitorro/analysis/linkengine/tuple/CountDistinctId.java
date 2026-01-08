@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine.tuple;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 9:20:31 AM
  * <p/>
  * Count the distinct set of tuples in the postings listFiles (no duplicate id's)
  */

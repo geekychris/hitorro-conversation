@@ -46,7 +46,6 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Jan 12, 2005 Time: 8:38:58 AM
  */
 @CommandDef(command = "text.similarity", description = "Test similarity of documents to a fetched page")
 public class SimilarityCommand extends com.hitorro.util.commandandcontrol.Command {

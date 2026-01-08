@@ -50,7 +50,6 @@ import java.util.List;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 5:15:13 PM
  */
 public class SharedAlgorithm implements RssAlgorithm {
     public static Iterator<RssItemInterface> getReferrers(long hash, Date startDate, Date endDate, byte type,

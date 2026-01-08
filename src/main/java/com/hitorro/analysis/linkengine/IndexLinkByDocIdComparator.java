@@ -23,9 +23,7 @@ package com.hitorro.analysis.linkengine;
 
 import java.util.Comparator;
 
-/**
- * <p/>
- */
+
 public class IndexLinkByDocIdComparator implements Comparator<IndexLink> {
     public int compare(IndexLink a, IndexLink b) {
         // from id

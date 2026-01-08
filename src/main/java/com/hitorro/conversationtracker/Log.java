@@ -25,7 +25,6 @@ import com.hitorro.util.log.Logger;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Sep 24, 2005 Time: 4:39:40 PM
  */
 public class Log extends com.hitorro.util.core.Log {
     public static final Logger conversationtracker = Logger.getLogger("ht.conversationtracker");

@@ -60,9 +60,6 @@ import org.apache.lucene.util.BytesRef;
 import java.util.*;
 
 /**
- * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Sep 28, 2005 Time: 9:24:39 AM
- * <p/>
  * To get a window (windows are counted from):
  * <p/>
  * rss: http://localhost:8072/external/rssquery?maxresults=10&windownumber=1 html:

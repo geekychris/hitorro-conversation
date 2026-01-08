@@ -37,7 +37,6 @@ import java.util.Date;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 5:24:02 PM
  */
 public class ReferencedAlgorithm implements RssAlgorithm {
     public String getName() {

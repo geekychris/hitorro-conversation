@@ -26,7 +26,6 @@ import com.hitorro.util.io.largedata.compressedstreams.CInputStream;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 16, 2005 Time: 8:25:08 AM
  */
 public class RLEISLinkTupleReader extends RLELinkTupleReader {
     private CInputStream m_is;

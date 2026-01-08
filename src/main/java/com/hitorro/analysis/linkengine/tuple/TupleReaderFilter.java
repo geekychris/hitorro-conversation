@@ -22,7 +22,6 @@
 package com.hitorro.analysis.linkengine.tuple;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 10:40:53 AM
  */
 public abstract class TupleReaderFilter {
     public abstract boolean isValid(LinkTupleReader reader);

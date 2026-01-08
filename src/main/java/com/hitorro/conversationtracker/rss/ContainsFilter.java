@@ -30,7 +30,6 @@ import com.hitorro.util.core.string.StringUtil;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 7, 2005 Time: 9:41:58 AM
  */
 public class ContainsFilter implements HTPredicate<RssItemInterface> {
     private String str;

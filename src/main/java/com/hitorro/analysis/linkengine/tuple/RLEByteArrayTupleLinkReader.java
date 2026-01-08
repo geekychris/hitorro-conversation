@@ -26,7 +26,6 @@ import com.hitorro.util.io.largedata.compressedstreams.COutputStream;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 16, 2005 Time: 8:27:57 AM
  */
 public class RLEByteArrayTupleLinkReader extends RLELinkTupleReader {
     private byte m_array[];

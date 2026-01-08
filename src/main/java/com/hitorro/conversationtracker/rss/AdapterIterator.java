@@ -32,7 +32,6 @@ import java.util.Iterator;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 2:46:15 PM
  */
 public class AdapterIterator<E extends VersionableObject> implements Iterator<RssItemInterface> {
     private Iterator<E> iterIn;

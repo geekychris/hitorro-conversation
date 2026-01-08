@@ -26,7 +26,6 @@ import com.hitorro.base.typesystem.btadapter.rssadapters.DocumentRssItemAdapter;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Sep 13, 2005 Time: 2:01:55 PM
  */
 public class ConversationtRssItem<E extends Conversation> extends DocumentRssItemAdapter<E> {
     public Class getHonoringClass() {

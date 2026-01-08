@@ -31,7 +31,6 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 21, 2005 Time: 3:12:11 PM
  * <p/>
  * The merger is given n segments and will apply them into a target segment.  Once complete, the old segments will be
  * removed from the index and substituted with the merged segment.

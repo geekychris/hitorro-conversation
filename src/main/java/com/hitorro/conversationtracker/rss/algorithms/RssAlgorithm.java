@@ -27,7 +27,6 @@ import com.hitorro.conversationtracker.rss.RssIteratorGenerator;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 4:56:53 PM
  */
 public interface RssAlgorithm {
     String AlgorithmPostQuery = "postquery";

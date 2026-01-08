@@ -40,7 +40,6 @@ import com.hitorro.util.core.string.StringUtil;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 5:16:47 PM
  */
 public class PostAlgorithm implements RssAlgorithm {
     private static final int PostCacheTime = 120;

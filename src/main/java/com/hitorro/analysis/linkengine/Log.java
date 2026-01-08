@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine;
 import com.hitorro.util.log.Logger;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Mar 12, 2005 Time: 3:58:16 PM
  */
 public class Log extends com.hitorro.util.core.Log {
     public static final Logger conversation = Logger.getLogger("ht.conversation");

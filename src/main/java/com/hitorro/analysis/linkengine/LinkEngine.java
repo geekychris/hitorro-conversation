@@ -34,7 +34,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * <p/>
- * <p/>
  * Engine consists of Link Segments that make up an logical index
  */
 public class LinkEngine {

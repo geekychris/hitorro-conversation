@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine.tuple;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 13, 2005 Time: 3:25:11 PM
  */
 public abstract class RLELinkTupleReader extends LinkTupleReader {
     private static final byte SansTypeCode = 0xff ^ 1 << 7;

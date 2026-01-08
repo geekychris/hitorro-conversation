@@ -26,7 +26,6 @@ import com.hitorro.analysis.linkengine.tuple.LogicCollectionTupleReaderFilter;
 import com.hitorro.analysis.linkengine.tuple.TupleReaderFilter;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 11:26:04 AM
  */
 public class ORTupleReaderFilter extends LogicCollectionTupleReaderFilter {
 

@@ -25,7 +25,6 @@ import com.hitorro.analysis.linkengine.tuple.LinkTupleReader;
 import com.hitorro.analysis.linkengine.tuple.TupleReaderFilter;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 10:33:36 AM
  */
 public class DateRangeFilter extends TupleReaderFilter {
     public short m_from;

@@ -45,7 +45,6 @@ import java.util.List;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 5:20:39 PM
  */
 public class ConversationAlgorithm implements RssAlgorithm {
     private int MaxConversationCount = 20;

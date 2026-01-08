@@ -48,7 +48,6 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Jan 25, 2005 Time: 11:28:22 PM
  * <p/>
  * What we do need for a Conversation is: -The domain of the Conversation (Tech, Poetry, Sewing) - this could be a
  * reference to an RssFeedGroup for now. What is the topic (url for external post?  listFiles of terms? reference to a Post

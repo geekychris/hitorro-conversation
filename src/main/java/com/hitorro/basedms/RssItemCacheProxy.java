@@ -34,7 +34,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 3, 2005 Time: 8:29:33 PM
  */
 
 @TypeClassMetaInfo(shortTypeName = TypeClassMetaInfo.RssItemCacheProxy,

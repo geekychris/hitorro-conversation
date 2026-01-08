@@ -29,7 +29,6 @@ import com.hitorro.util.typesystem.btadapter.BaseAdapterItemCache;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 2:44:45 PM
  */
 public class ConversationAdapter<E extends BaseType, OUT> extends SORetrievalAdapter<Conversation, RssItemInterface> {
 

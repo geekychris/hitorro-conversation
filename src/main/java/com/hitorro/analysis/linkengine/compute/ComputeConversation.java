@@ -56,7 +56,6 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Mar 8, 2005 Time: 12:00:25 PM
  * <p/>
  * Compute a conversation from a listFiles of seed nodes.
  */

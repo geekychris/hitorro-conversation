@@ -27,7 +27,6 @@ import com.hitorro.util.typesystem.ProxyAdapter;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 24, 2005 Time: 12:57:54 PM
  */
 public class RssItemProxy extends ProxyAdapter<RssItemInterface> {
     public RssItemInterface proxy(RssItemInterface e) {

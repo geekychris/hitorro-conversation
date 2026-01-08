@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine.tuple;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 13, 2005 Time: 3:40:20 PM
  * <p/>
  * Select tree is responsible for providing a merged view of multiple  Tuple Reader's. This class however only does two
  * Readers....Put them in a call tree which gives Log2n performance (where n is the number of channels).

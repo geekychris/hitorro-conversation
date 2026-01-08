@@ -32,7 +32,6 @@ import com.hitorro.util.io.largedata.compressedstreams.FSOutputStream;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 16, 2005 Time: 8:18:00 AM encapsulation
  * of the set of index parts that make up a segment.
  * <p/>
  * The DocId mapping here is ignorant to whether this is a hash based id or some ephemeral id, it simply is a key to

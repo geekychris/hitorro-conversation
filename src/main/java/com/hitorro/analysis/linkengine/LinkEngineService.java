@@ -33,9 +33,7 @@ import com.hitorro.obj.core.TextService;
 import com.hitorro.util.startupframework.phases.ServiceDefinition;
 
 
-/**
- * <p/>
- */
+
 @ServiceDefinition(dependentService = {TextService.class},
         shortName = "linkengine",
         description = "Link Engineservices",

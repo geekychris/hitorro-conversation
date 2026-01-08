@@ -30,7 +30,6 @@ import com.hitorro.util.json.keys.IntegerProperty;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 2:45:48 PM
  */
 public class MinDescriptionSize implements HTPredicate<RssItemInterface> {
     public static final IntegerProperty MinKey = new IntegerProperty("minlength", "", 10);

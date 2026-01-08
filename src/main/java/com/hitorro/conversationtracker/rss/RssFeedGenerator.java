@@ -49,9 +49,6 @@ import java.util.Map;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Sep 6, 2005 Time: 7:32:10 PM
- * <p/>
- * <p/>
  * forum      = <forum_name>                - constrain by a forum orderby    = <authoredDate|createDate>   - for
  * aggregated feeds like TechOne, we dont really want the post date as they were not added to the share in the authored
  * date order. However for a normal forum we probably do want them in regular authoredDate order maxresults = <count> -

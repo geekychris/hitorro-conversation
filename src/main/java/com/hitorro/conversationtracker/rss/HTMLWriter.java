@@ -44,7 +44,6 @@ import java.util.*;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Sep 28, 2005 Time: 3:15:51 PM
  */
 public class HTMLWriter extends XWriter {
     private static final String flash = "<embed jwcid=\"@Any\" type=\"application/x-shockwave-flash\" src=\"http://www.HiTorro.net/player/HiTorro-player.swf?bc=3F34K2L1\"" +

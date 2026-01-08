@@ -30,9 +30,7 @@ import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
 
 import java.io.IOException;
 
-/**
- * <p/>
- */
+
 @TypeClassMetaInfo(shortTypeName = TypeClassMetaInfo.IndexLink,
         isView = false,
         isPersisted = false,

@@ -36,7 +36,6 @@ import java.util.List;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Sep 6, 2005 Time: 10:12:06 AM
  */
 public class RssWriter extends XWriter {
     public RssWriter(JsonNode params) {

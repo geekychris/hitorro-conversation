@@ -28,7 +28,6 @@ import com.hitorro.util.core.Console;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 13, 2005 Time: 3:17:52 PM
  * <p/>
  * A tuple posting looks like: <docId><typeCode><date>[<metric>]
  */

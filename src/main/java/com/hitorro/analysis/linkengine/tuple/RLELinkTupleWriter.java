@@ -27,7 +27,6 @@ import java.io.IOException;
 
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 13, 2005 Time: 3:40:40 PM
  */
 public class RLELinkTupleWriter extends LinkTupleWriter {
     private COutputStream m_os;

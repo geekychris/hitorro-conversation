@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine.tuple;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 14, 2005 Time: 10:57:20 AM
  * <p/>
  * Abstract class for filtering out tuples we dont care about
  */

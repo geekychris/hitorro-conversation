@@ -35,9 +35,7 @@ import org.quartz.JobExecutionContext;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * <p/>
- */
+
 public class LinkEngineIndexerJob implements Job {
     private static LockBox s_lockBox = new LockBox();
 

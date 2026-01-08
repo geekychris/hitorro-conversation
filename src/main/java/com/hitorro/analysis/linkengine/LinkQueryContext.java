@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 20, 2005 Time: 3:38:46 PM
  */
 public class LinkQueryContext extends TuplePool {
     LinkQueryContext m_next;

@@ -31,7 +31,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 21, 2005 Time: 5:09:25 PM
  * <p/>
  * Encapsulate the management of a pool of tuple readers and the ability to create an or tree from raw readers.  Used
  * for normal queries and for merging segments.

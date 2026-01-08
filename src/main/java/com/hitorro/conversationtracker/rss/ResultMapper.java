@@ -26,7 +26,6 @@ import org.apache.lucene.document.Document;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 2:43:54 PM
  */
 public class ResultMapper implements LuceneResultIteratorAdapter<String> {
     public String map(float score, Document doc) {

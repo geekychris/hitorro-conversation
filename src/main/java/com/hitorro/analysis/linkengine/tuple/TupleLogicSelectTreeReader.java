@@ -25,7 +25,6 @@ import java.io.IOException;
 
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 13, 2005 Time: 3:40:20 PM
  */
 
 public abstract class TupleLogicSelectTreeReader extends LinkTupleReader {

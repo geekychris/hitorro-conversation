@@ -24,7 +24,6 @@ package com.hitorro.analysis.linkengine.tuple;
 import java.io.IOException;
 
 /**
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Feb 15, 2005 Time: 9:00:06 AM
  */
 public abstract class LinkTupleReaderSink {
     protected LinkTupleReader m_reader;

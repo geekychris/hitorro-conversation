@@ -31,7 +31,6 @@ import java.util.Date;
 
 /**
  * <p/>
- * Copyright (c) 2003 - present HiTorro All rights reserved. User: chris Date: Oct 4, 2005 Time: 2:45:27 PM
  */
 public class MinDateSize implements HTPredicate<RssItemInterface> {
     private Date nowDate;
