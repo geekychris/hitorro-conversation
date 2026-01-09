@@ -92,8 +92,8 @@ public class Conversation extends Document {
     private User m_primaryPersonality;
     private Date m_firstPostDate;
     private Date m_lastPostDate;
-    private double m_conversationRank;
-    private String m_detailsGuid;
+    private double conversationRank;
+    private String detailsGuid;
     private Set<Post> m_posts;
     private Date fromDate;
     private Date toDate;
@@ -215,8 +215,8 @@ public class Conversation extends Document {
         m_primaryPersonality = other.m_primaryPersonality;
         m_firstPostDate = other.m_firstPostDate;
         m_lastPostDate = other.m_lastPostDate;
-        m_conversationRank = other.m_conversationRank;
-        m_detailsGuid = other.m_detailsGuid;
+        conversationRank = other.conversationRank;
+        detailsGuid = other.detailsGuid;
     }
 
     public void serialize(HTObjectOutputStream os)
@@ -229,8 +229,8 @@ public class Conversation extends Document {
         os.writeVersionedObject(m_primaryPersonality);
         os.writeDate(m_firstPostDate);
         os.writeDate(m_lastPostDate);
-        os.writeDouble(m_conversationRank);
-        os.writeString(m_detailsGuid);
+        os.writeDouble(conversationRank);
+        os.writeString(detailsGuid);
         os.writeSetOfBaseType(m_posts);
 
     }
@@ -248,8 +248,8 @@ public class Conversation extends Document {
                 m_primaryPersonality = (User) os.readVersionedObject();
                 m_firstPostDate = os.readDate();
                 m_lastPostDate = os.readDate();
-                m_conversationRank = os.readDouble();
-                m_detailsGuid = os.readString();
+                conversationRank = os.readDouble();
+                detailsGuid = os.readString();
                 os.readSetOfHTSerializable(m_posts);
         }
     }
@@ -312,19 +312,19 @@ public class Conversation extends Document {
 
     @com.hitorro.util.typesystem.annotation.UiProperties(displayName = "Rank", displayType = com.hitorro.util.typesystem.annotation.UiProperties.DoubleFieldDisplay, order = 60)
     public double getConversationRank() {
-        return m_conversationRank;
+        return conversationRank;
     }
 
     public void setConversationRank(double conversationRank) {
-        this.m_conversationRank = conversationRank;
+        this.conversationRank = conversationRank;
     }
 
     public String getDetailsGuid() {
-        return m_detailsGuid;
+        return detailsGuid;
     }
 
     public void setDetailsGuid(String val) {
-        m_detailsGuid = val;
+        detailsGuid = val;
     }
 
     public Set<Post> getPosts() {

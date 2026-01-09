@@ -40,32 +40,32 @@ public class LinkEngine {
     public static final String ResourceName = "linkengine";
     public static final String VersionQuery = "1.0+";
 
-    private BaseFile m_indexDir;
-    private BaseFile m_segmentFile = null;
-    private BaseFile m_docIdMapFile = null;
+    private BaseFile indexDir;
+    private BaseFile segmentFile = null;
+    private BaseFile docIdMapFile = null;
 
-    private LinkQueryContext m_queryContext = null;
+    private LinkQueryContext queryContext = null;
 
-    private List<LinkSegment> m_linkSegments = null;
-    private List<String> m_segmentNames = null;
-    private boolean m_retrievedFromResourceCache = false;
-    private ReadWriteLock m_readerWriterLock = new ReentrantReadWriteLock();
+    private List<LinkSegment> linkSegments = null;
+    private List<String> segmentNames = null;
+    private boolean retrievedFromResourceCache = false;
+    private ReadWriteLock readerWriterLock = new ReentrantReadWriteLock();
 
     public LinkEngine(BaseFile dir) throws IOException {
-        m_indexDir = dir;
+        indexDir = dir;
         init();
     }
 
     public boolean getRetrievedFromResourceCache() {
-        return m_retrievedFromResourceCache;
+        return retrievedFromResourceCache;
     }
 
     public void setRetrievedFromResourceCache(boolean flag) {
-        m_retrievedFromResourceCache = flag;
+        retrievedFromResourceCache = flag;
     }
 
     public BaseFile getIndexDir() {
-        return m_indexDir;
+        return indexDir;
     }
 
     /**
@@ -74,26 +74,26 @@ public class LinkEngine {
      */
     public void optimize() throws IOException {
         SegmentMerger merger = new SegmentMerger(this);
-        for (LinkSegment segment : m_linkSegments) {
+        for (LinkSegment segment : linkSegments) {
             merger.add(segment);
         }
         LinkSegment segment = merger.merge();
-        m_readerWriterLock.writeLock().lock();
+        readerWriterLock.writeLock().lock();
         List<LinkSegment> newSeg = new ArrayList<LinkSegment>();
-        List<LinkSegment> oldSeg = this.m_linkSegments;
-        m_linkSegments = new ArrayList<LinkSegment>();
+        List<LinkSegment> oldSeg = this.linkSegments;
+        linkSegments = new ArrayList<LinkSegment>();
         try {
             segment.load();
             newSeg.add(segment);
-            m_segmentNames.clear();
-            m_segmentNames.add(segment.getName());
-            m_linkSegments.add(segment);
-            writeSegmentNames(m_segmentNames);
+            segmentNames.clear();
+            segmentNames.add(segment.getName());
+            linkSegments.add(segment);
+            writeSegmentNames(segmentNames);
             for (LinkSegment old : oldSeg) {
                 old.delete();
             }
         } finally {
-            m_readerWriterLock.writeLock().unlock();
+            readerWriterLock.writeLock().unlock();
         }
     }
 
@@ -110,10 +110,10 @@ public class LinkEngine {
      * @throws IOException
      */
     LinkTupleReader getReader(LinkQueryContext context, long docId) throws IOException {
-        if (m_linkSegments.size() == 1) {
-            return m_linkSegments.get(0).getReaderForDocId(context, docId);
+        if (linkSegments.size() == 1) {
+            return linkSegments.get(0).getReaderForDocId(context, docId);
         }
-        for (LinkSegment segment : m_linkSegments) {
+        for (LinkSegment segment : linkSegments) {
             LinkTupleReader reader = segment.getReaderForDocId(context, docId);
             if (reader != null) {
                 context.enQueue(reader);
@@ -123,11 +123,11 @@ public class LinkEngine {
     }
 
     public synchronized LinkQueryContext getQueryContext() {
-        if (m_queryContext == null) {
-            return new LinkQueryContext(this, m_readerWriterLock.readLock());
+        if (queryContext == null) {
+            return new LinkQueryContext(this, readerWriterLock.readLock());
         }
-        LinkQueryContext returnMe = m_queryContext;
-        m_queryContext = m_queryContext.m_next;
+        LinkQueryContext returnMe = queryContext;
+        queryContext = queryContext.m_next;
         returnMe.lock();
         return returnMe;
     }
@@ -136,14 +136,14 @@ public class LinkEngine {
         //we would deal with a pool here.
         context.release();
 
-        context.m_next = m_queryContext;
-        m_queryContext = context;
+        context.m_next = queryContext;
+        queryContext = context;
     }
 
     public LinkSegmentWriter getWriter() {
         String name = Fmt.S("%s", System.currentTimeMillis());
-        LinkSegment segment = new LinkSegment(m_indexDir, name);
-        return new LinkSegmentWriter(m_indexDir, segment);
+        LinkSegment segment = new LinkSegment(indexDir, name);
+        return new LinkSegmentWriter(indexDir, segment);
     }
 
     public void rollback(LinkSegment segment) throws IOException {
@@ -168,30 +168,30 @@ public class LinkEngine {
             segment.delete();
             return;
         }
-        m_readerWriterLock.writeLock().lock();
+        readerWriterLock.writeLock().lock();
 
         try {
             segment.load();
-            m_segmentNames.add(segment.getName());
-            writeSegmentNames(m_segmentNames);
-            m_linkSegments.add(segment);
+            segmentNames.add(segment.getName());
+            writeSegmentNames(segmentNames);
+            linkSegments.add(segment);
         } finally {
-            m_readerWriterLock.writeLock().unlock();
+            readerWriterLock.writeLock().unlock();
         }
     }
 
     private void init() throws IOException {
-        m_segmentFile = m_indexDir.getChild("segments");
-        m_docIdMapFile = m_indexDir.getChild("idmap");
+        segmentFile = indexDir.getChild("segments");
+        docIdMapFile = indexDir.getChild("idmap");
 
-        m_indexDir.mkdir();
-        m_segmentNames = readSegmentNames();
-        m_linkSegments = readLinkSegmentsFromList(m_segmentNames);
+        indexDir.mkdir();
+        segmentNames = readSegmentNames();
+        linkSegments = readLinkSegmentsFromList(segmentNames);
     }
 
     private List<String> readSegmentNames() throws IOException {
-        if (m_segmentFile.exists()) {
-            return m_segmentFile.getLines();
+        if (segmentFile.exists()) {
+            return segmentFile.getLines();
         }
         return new ArrayList<String>();
     }
@@ -207,7 +207,7 @@ public class LinkEngine {
 
     private LinkSegment getLinkSegmentByName(String name)
             throws IOException {
-        LinkSegment ls = new LinkSegment(m_indexDir, name);
+        LinkSegment ls = new LinkSegment(indexDir, name);
         ls.load();
         return ls;
     }
@@ -219,16 +219,16 @@ public class LinkEngine {
      * @throws FileNotFoundException
      */
     private void writeSegmentNames(List<String> names) throws IOException {
-        BaseFile temp = m_indexDir.getChild("segments.temp");
+        BaseFile temp = indexDir.getChild("segments.temp");
         if (temp.exists()) {
             temp.delete();
         }
         temp.writeStringListToFile(names);
-        if (m_segmentFile.exists()) {
-            m_segmentFile.swap(temp);
+        if (segmentFile.exists()) {
+            segmentFile.swap(temp);
             temp.delete();
         } else {
-            temp.renameTo(m_segmentFile);
+            temp.renameTo(segmentFile);
         }
     }
 }

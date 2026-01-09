@@ -28,13 +28,13 @@ import java.io.IOException;
 public abstract class RLELinkTupleReader extends LinkTupleReader {
     private static final byte SansTypeCode = 0xff ^ 1 << 7;
     protected boolean m_hasMoreReferences = false;
-    protected byte m_typeCodeUnmuted;
+    protected byte typeCodeUnmuted;
 
     public boolean readNext() throws IOException {
-        if (hasMoreRefs(m_typeCodeUnmuted)) {
+        if (hasMoreRefs(typeCodeUnmuted)) {
             // this is a follow on reference between the same vertices.
-            m_typeCodeUnmuted = readByte();
-            m_typeCode = (byte) (m_typeCodeUnmuted & SansTypeCode);
+            typeCodeUnmuted = readByte();
+            m_typeCode = (byte) (typeCodeUnmuted & SansTypeCode);
 
             if (hasMetric(m_typeCode)) {
                 m_metric = readByte();
@@ -42,14 +42,14 @@ public abstract class RLELinkTupleReader extends LinkTupleReader {
         } else {
             long tempId = this.readVLong();
             if (tempId == 0) {
-                m_readerDocumentId = 0;
+                readerDocumentId = 0;
                 // end of postings;
                 return false;
             }
 
-            m_readerDocumentId += tempId;
-            m_typeCodeUnmuted = readByte();
-            m_typeCode = (byte) (m_typeCodeUnmuted & SansTypeCode);
+            readerDocumentId += tempId;
+            typeCodeUnmuted = readByte();
+            m_typeCode = (byte) (typeCodeUnmuted & SansTypeCode);
 
             this.m_date = readShort();
             if (hasMetric(m_typeCode)) {
@@ -69,8 +69,8 @@ public abstract class RLELinkTupleReader extends LinkTupleReader {
     private boolean readToDocIdAux(long docId) throws IOException {
         if (hasMoreRefs(m_typeCode)) {
             // this is a follow on reference between the same vertices.
-            m_typeCodeUnmuted = readByte();
-            m_typeCode = (byte) (m_typeCodeUnmuted & SansTypeCode);
+            typeCodeUnmuted = readByte();
+            m_typeCode = (byte) (typeCodeUnmuted & SansTypeCode);
             if (hasMetric(m_typeCode)) {
                 m_metric = readByte();
             }
@@ -81,10 +81,10 @@ public abstract class RLELinkTupleReader extends LinkTupleReader {
                 return false;
             }
 
-            m_readerDocumentId += tempId;
+            readerDocumentId += tempId;
             m_typeCode = readByte();
 
-            if (docId == m_readerDocumentId) {
+            if (docId == readerDocumentId) {
                 // we want to read the full thing
                 this.m_date = readShort();
                 if (hasMetric(m_typeCode)) {

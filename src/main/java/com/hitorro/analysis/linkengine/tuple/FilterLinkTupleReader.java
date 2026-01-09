@@ -47,7 +47,7 @@ public class FilterLinkTupleReader extends LinkTupleReader {
     public boolean readNext() throws IOException {
         while (m_reader.readNext()) {
             if (m_filter.isValid(m_reader)) {
-                m_readerDocumentId = m_reader.m_readerDocumentId;
+                readerDocumentId = m_reader.readerDocumentId;
                 m_typeCode = m_reader.m_typeCode;
                 m_metric = m_reader.m_metric;
                 m_date = m_reader.m_date;

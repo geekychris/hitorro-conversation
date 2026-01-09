@@ -37,11 +37,11 @@ public class IndexLinkByDocIdComparator implements Comparator<IndexLink> {
             return -1;
         }
 
-        if (a.m_toDocId > b.m_toDocId) {
+        if (a.toDocId > b.toDocId) {
             return 1;
         }
 
-        if (a.m_toDocId < b.m_toDocId) {
+        if (a.toDocId < b.toDocId) {
             return -1;
         }
 

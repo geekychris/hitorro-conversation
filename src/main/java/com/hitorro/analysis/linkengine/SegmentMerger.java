@@ -38,12 +38,12 @@ import java.util.List;
 class SegmentMerger extends TuplePool {
     private PriorityQueue<RLEByteArrayTupleLinkReader> m_pq =
             new PriorityQueue<RLEByteArrayTupleLinkReader>(new SegmentMergerComparator(), 100);
-    private ArrayList<RLEByteArrayTupleLinkReader> m_inUse =
+    private ArrayList<RLEByteArrayTupleLinkReader> inUse =
             new ArrayList<RLEByteArrayTupleLinkReader>();
     private List<LinkSegment> m_segments = new ArrayList<LinkSegment>();
 
     private LinkEngine m_engine;
-    private int m_inUseCount = 0;
+    private int inUseCount = 0;
 
     public SegmentMerger(LinkEngine engine) {
         m_engine = engine;
@@ -56,7 +56,7 @@ class SegmentMerger extends TuplePool {
         reader.readDocId();
         m_pq.put(reader);
         m_segments.add(segment);
-        m_inUseCount++;
+        inUseCount++;
     }
 
     public LinkSegment merge() throws IOException {
@@ -64,7 +64,7 @@ class SegmentMerger extends TuplePool {
         writer.open();
         long docId = 0;
         int postings = 0;
-        while (m_inUseCount > 0) {
+        while (inUseCount > 0) {
             // keep doing this while we have elements in the queue
 
             if ((m_pq.size() == 0 || m_pq.top().m_docId != docId) && getQueueSize() > 0) {
@@ -74,32 +74,32 @@ class SegmentMerger extends TuplePool {
                 if (copyMe != null) {
                     postings++;
                     while (copyMe.readNext()) {
-                        writer.write(docId, copyMe.m_readerDocumentId, copyMe.m_typeCode, copyMe.m_metric, copyMe.m_date);
+                        writer.write(docId, copyMe.readerDocumentId, copyMe.m_typeCode, copyMe.m_metric, copyMe.m_date);
                     }
 
                     // return the select tree back.  We do infact return the byte readers back to the pool
                     // though we are actually ok since we never do any further allocs of them here.
                     copyMe.free(m_pool);
-                    for (RLEByteArrayTupleLinkReader rb : m_inUse) {
+                    for (RLEByteArrayTupleLinkReader rb : inUse) {
                         // put the used readers back on the listFiles.
                         rb.readDocId();
                         m_pq.insert(rb);
                     }
-                    m_inUse.clear();
+                    inUse.clear();
                 }
             } else {
                 // item at the top of the queue
                 RLEByteArrayTupleLinkReader reader = m_pq.pop();
                 if (reader != null && reader.m_docId == -1) {
                     // reader is at the end, dont requeue
-                    m_inUseCount--;
+                    inUseCount--;
                     continue;
                 } else {
                     docId = reader.m_docId;
                     // to apply a select tree
                     this.enQueue(reader);
                     // listFiles to track what we took off the queue, so we can advance them and put them back on the queue
-                    m_inUse.add(reader);
+                    inUse.add(reader);
                 }
             }
         }

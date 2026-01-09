@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class LinkSetToLinkIterator implements Iterator<Link> {
     private Iterator<LinkSet> m_iter;
-    private Iterator<Link> m_linkIter;
+    private Iterator<Link> linkIter;
     private Link m_link;
 
     public LinkSetToLinkIterator(Iterator<LinkSet> iter) {
@@ -56,9 +56,9 @@ public class LinkSetToLinkIterator implements Iterator<Link> {
     }
 
     private Link advance() {
-        if (m_linkIter != null) {
-            if (m_linkIter.hasNext()) {
-                return m_linkIter.next();
+        if (linkIter != null) {
+            if (linkIter.hasNext()) {
+                return linkIter.next();
             }
         }
         while (m_iter.hasNext()) {
@@ -68,9 +68,9 @@ public class LinkSetToLinkIterator implements Iterator<Link> {
                 list = ls.getLinks();
             }
             if (list != null && list.size() > 0) {
-                m_linkIter = list.iterator();
-                if (m_linkIter.hasNext()) {
-                    return m_linkIter.next();
+                linkIter = list.iterator();
+                if (linkIter.hasNext()) {
+                    return linkIter.next();
                 }
             }
         }

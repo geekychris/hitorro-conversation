@@ -40,19 +40,19 @@ import java.io.IOException;
 public class LinkSegment {
     public static final String SegmentExtension = "segment";
     public static final String DocToPositionExtension = "positionals";
-    private TLongLongHashMap m_docIdToPosition = new TLongLongHashMap();
+    private TLongLongHashMap docIdToPosition = new TLongLongHashMap();
     private byte m_array[];
     private BaseFile m_dir;
-    private String m_segmentName;
+    private String segmentName;
 
-    private BaseFile m_segFile;
-    private BaseFile m_positionalsFile;
+    private BaseFile segFile;
+    private BaseFile positionalsFile;
 
     public LinkSegment(BaseFile dir, String segmentName) {
         m_dir = dir;
-        m_segmentName = segmentName;
-        m_segFile = m_dir.getChild("%s.%s", m_segmentName, SegmentExtension);
-        m_positionalsFile = m_dir.getChild("%s.%s", m_segmentName, DocToPositionExtension);
+        this.segmentName = segmentName;
+        segFile = m_dir.getChild("%s.%s", this.segmentName, SegmentExtension);
+        positionalsFile = m_dir.getChild("%s.%s", this.segmentName, DocToPositionExtension);
     }
 
     /**
@@ -61,11 +61,11 @@ public class LinkSegment {
      * @return
      */
     public int getSize() {
-        return m_docIdToPosition.size();
+        return docIdToPosition.size();
     }
 
     public String getName() {
-        return m_segmentName;
+        return segmentName;
     }
 
     byte[] getArray() {
@@ -73,8 +73,8 @@ public class LinkSegment {
     }
 
     public void delete() throws IOException {
-        m_segFile.delete();
-        m_positionalsFile.delete();
+        segFile.delete();
+        positionalsFile.delete();
     }
 
     /**
@@ -86,7 +86,7 @@ public class LinkSegment {
      * @return reader, or null if docid is not available.
      */
     LinkTupleReader getReaderForDocId(LinkQueryContext context, long docId) {
-        long pos = m_docIdToPosition.get(docId);
+        long pos = docIdToPosition.get(docId);
         if (pos == 0) {
             return null;
         }
@@ -97,22 +97,22 @@ public class LinkSegment {
     }
 
     public void load() throws IOException {
-        m_array = m_segFile.getBytes();
-        m_docIdToPosition = TroveMapUtil.getTLongLongFromFile(m_positionalsFile, m_docIdToPosition);
+        m_array = segFile.getBytes();
+        docIdToPosition = TroveMapUtil.getTLongLongFromFile(positionalsFile, docIdToPosition);
     }
 
     void setOffset(long docid, long offset) {
-        m_docIdToPosition.put(docid, offset);
+        docIdToPosition.put(docid, offset);
     }
 
     void writePositional() throws IOException {
-        int size = m_docIdToPosition.size();
-        TroveMapUtil.writeTLongLongMapToFile(m_positionalsFile, m_docIdToPosition);
+        int size = docIdToPosition.size();
+        TroveMapUtil.writeTLongLongMapToFile(positionalsFile, docIdToPosition);
     }
 
     FSOutputStream getOutputStream()
             throws IOException {
-        m_segFile.getParent().mkdir();
-        return new FSOutputStream(m_segFile);
+        segFile.getParent().mkdir();
+        return new FSOutputStream(segFile);
     }
 }

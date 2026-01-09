@@ -38,14 +38,14 @@ import java.io.IOException;
 public class IndexLink implements HTSerializable, Comparable<IndexLink> {
     public static final int SerialVersion = 1;
     public long m_fromDocId;
-    public long m_toDocId;
+    public long toDocId;
     public byte m_type;
     public byte m_metric;
     public short m_date;
 
     public void setHashes(long from, long to) {
         m_fromDocId = from;
-        m_toDocId = to;
+        toDocId = to;
     }
 
     public void setDate(long d) {
@@ -63,7 +63,7 @@ public class IndexLink implements HTSerializable, Comparable<IndexLink> {
     public void serialize(HTObjectOutputStream os) throws IOException, StoreException {
         os.writeInt(getSerializationVersion());
         os.writeLong(m_fromDocId);
-        os.writeLong(m_toDocId);
+        os.writeLong(toDocId);
         os.writeByte(m_type);
         os.writeByte(m_metric);
         os.writeShort(m_date);
@@ -74,7 +74,7 @@ public class IndexLink implements HTSerializable, Comparable<IndexLink> {
         int version = os.readInt();
 
         m_fromDocId = os.readLong();
-        m_toDocId = os.readLong();
+        toDocId = os.readLong();
         m_type = os.readByte();
         m_metric = os.readByte();
         m_date = os.readShort();

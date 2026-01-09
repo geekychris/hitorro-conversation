@@ -42,14 +42,14 @@ public class TuplePool {
     public static final int MaxPoolSlot = ANDReader;
 
     protected LinkTupleReader m_pool[] = new LinkTupleReader[MaxPoolSlot];
-    private Queue<LinkTupleReader> m_readerQueue = new LinkedList<LinkTupleReader>();
+    private Queue<LinkTupleReader> readerQueue = new LinkedList<LinkTupleReader>();
 
 
     void enQueue(LinkTupleReader reader) {
         if (reader == null) {
             return;
         }
-        m_readerQueue.add(reader);
+        readerQueue.add(reader);
     }
 
     /**
@@ -65,24 +65,24 @@ public class TuplePool {
      */
     LinkTupleReader popQueue() throws IOException {
 
-        int size = m_readerQueue.size();
+        int size = readerQueue.size();
         if (size == 0) {
             // didnt really expect that since we must of found the doc entry in the listFiles
             return null;
         }
 
-        while (m_readerQueue.size() > 1) {
+        while (readerQueue.size() > 1) {
             TupleORSelectTreeReader reader = this.getORReader();
-            reader.set(m_readerQueue.remove(), m_readerQueue.remove());
-            m_readerQueue.add(reader);
+            reader.set(readerQueue.remove(), readerQueue.remove());
+            readerQueue.add(reader);
         }
-        LinkTupleReader reader = m_readerQueue.remove();
+        LinkTupleReader reader = readerQueue.remove();
         reader.reset();
         return reader;
     }
 
     int getQueueSize() {
-        return m_readerQueue.size();
+        return readerQueue.size();
     }
 
     /**
@@ -108,7 +108,7 @@ public class TuplePool {
 
         } else {
             reader = new RLEByteArrayTupleLinkReader();
-            reader.m_poolIndex = RLEByteReader;
+            reader.poolIndex = RLEByteReader;
         }
         return reader;
     }
@@ -121,7 +121,7 @@ public class TuplePool {
             reader.m_next = null;
         } else {
             reader = new TupleORSelectTreeReader();
-            reader.m_poolIndex = ORReader;
+            reader.poolIndex = ORReader;
         }
         return reader;
     }
@@ -134,7 +134,7 @@ public class TuplePool {
             reader.m_next = null;
         } else {
             reader = new TupleANDSelectTreeReader();
-            reader.m_poolIndex = ANDReader;
+            reader.poolIndex = ANDReader;
         }
         return reader;
     }

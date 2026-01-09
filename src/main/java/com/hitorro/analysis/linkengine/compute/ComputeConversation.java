@@ -182,13 +182,13 @@ public class ComputeConversation {
                         forwardFilterReader.setReader(reader);
                         forwardFilterReader.reset();
                         while (forwardFilterReader.readNext()) {
-                            LinkTupleReader backReader = c.getReaderForDocId(forwardFilterReader.m_readerDocumentId);
+                            LinkTupleReader backReader = c.getReaderForDocId(forwardFilterReader.readerDocumentId);
                             if (backReader != null) {
                                 reverseFilterReader.setReader(backReader);
                                 reverseFilterReader.reset();
                                 int count = countDistinct.getInt();
                                 if (count > minPosters) {
-                                    set.add(forwardFilterReader.m_readerDocumentId, count);
+                                    set.add(forwardFilterReader.readerDocumentId, count);
                                     count++;
                                 }
                                 // count of things pointing to this article
@@ -245,7 +245,7 @@ public class ComputeConversation {
                         reverseFilterReader.reset();
                         while (reverseFilterReader.readNext()) {
 
-                            conv.addReferrer(new ReferringPost(reverseFilterReader.m_readerDocumentId));
+                            conv.addReferrer(new ReferringPost(reverseFilterReader.readerDocumentId));
                         }
                     }
                 } else {

@@ -31,24 +31,24 @@ import java.io.IOException;
  * (and makes it a tad more complex), however writing will be an orders of magnitude less than reading.
  */
 public abstract class LinkTupleWriter {
-    protected long m_prevDocId;
+    protected long prevDocId;
     protected byte m_type;
     protected byte m_metric;
     protected short m_date;
 
-    protected boolean m_sameAsPrevious;
+    protected boolean sameAsPrevious;
 
     public void reset() {
-        m_prevDocId = 0;
-        m_sameAsPrevious = false;
+        prevDocId = 0;
+        sameAsPrevious = false;
     }
 
     public boolean writeTuple(long docId, byte type, byte metric, short date) throws IOException {
         // if the doc ids are the same then we only write out the type, metric info.
 
-        writeOutPrev(docId == m_prevDocId, m_sameAsPrevious);
-        m_sameAsPrevious = (docId == m_prevDocId);
-        m_prevDocId = docId;
+        writeOutPrev(docId == prevDocId, sameAsPrevious);
+        sameAsPrevious = (docId == prevDocId);
+        prevDocId = docId;
         m_type = type;
         m_metric = metric;
         m_date = date;
@@ -56,11 +56,11 @@ public abstract class LinkTupleWriter {
     }
 
     private boolean writeOutPrev(boolean nextIsSame, boolean thisIsFollowOn) throws IOException {
-        if (m_prevDocId == 0) {
+        if (prevDocId == 0) {
             // this was the first time called and we should write out null.
             return true;
         }
-        return writeTupleAux(m_prevDocId, m_type, m_metric, m_date, nextIsSame, thisIsFollowOn);
+        return writeTupleAux(prevDocId, m_type, m_metric, m_date, nextIsSame, thisIsFollowOn);
     }
 
     /**
@@ -68,7 +68,7 @@ public abstract class LinkTupleWriter {
      */
     public boolean close() throws IOException {
 
-        boolean returnVal = writeOutPrev(false, m_sameAsPrevious);
+        boolean returnVal = writeOutPrev(false, sameAsPrevious);
         writeEndOfStream();
         reset();
         return returnVal;

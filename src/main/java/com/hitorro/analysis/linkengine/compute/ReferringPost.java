@@ -41,7 +41,7 @@ public class ReferringPost implements HTSerializable {
     public String m_moreLink;
     public String m_userGuid;
     public String m_user;
-    public String m_forumGuid;
+    public String forumGuid;
     public String m_forum;
 
     public ReferringPost(long hash) {
@@ -58,7 +58,7 @@ public class ReferringPost implements HTSerializable {
         os.writeString(m_moreLink);
         os.writeString(m_userGuid);
         os.writeString(m_user);
-        os.writeString(m_forumGuid);
+        os.writeString(forumGuid);
         os.writeString(m_forum);
         os.writeLong(m_hash);
     }
@@ -70,7 +70,7 @@ public class ReferringPost implements HTSerializable {
         m_moreLink = os.readString();
         m_userGuid = os.readString();
         m_user = os.readString();
-        m_forumGuid = os.readString();
+        forumGuid = os.readString();
         m_forum = os.readString();
         m_hash = os.readLong();
     }

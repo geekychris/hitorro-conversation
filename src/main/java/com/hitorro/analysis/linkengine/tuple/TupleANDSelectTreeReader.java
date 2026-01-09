@@ -51,14 +51,14 @@ public class TupleANDSelectTreeReader extends TupleLogicSelectTreeReader {
                     continue;
                 case 1:
                     // have test of both channels
-                    return m_readerDocumentId > 0;
+                    return readerDocumentId > 0;
             }
         }
     }
 
     protected final int readTupleAux() throws IOException {
-        if (m_left.m_readerDocumentId != 0 && m_right.m_readerDocumentId != 0) {
-            if (m_left.m_readerDocumentId == m_right.m_readerDocumentId) {
+        if (m_left.readerDocumentId != 0 && m_right.readerDocumentId != 0) {
+            if (m_left.readerDocumentId == m_right.readerDocumentId) {
                 // items same, we should taken in order of type
                 takeLeft();
                 byte lTC = m_left.m_typeCode;
@@ -77,7 +77,7 @@ public class TupleANDSelectTreeReader extends TupleLogicSelectTreeReader {
                     m_right.readNext();
                 }
                 return 1;
-            } else if (m_left.m_readerDocumentId < m_right.m_readerDocumentId) {
+            } else if (m_left.readerDocumentId < m_right.readerDocumentId) {
                 m_left.readNext();
                 return 0;
             } else {

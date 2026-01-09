@@ -66,8 +66,8 @@ public abstract class LinkTupleReader {
     public long m_docId;
     //
     public LinkTupleReader m_next;
-    public int m_poolIndex = -1;
-    public long m_readerDocumentId;
+    public int poolIndex = -1;
+    public long readerDocumentId;
     public byte m_typeCode;
     public short m_date;
     public byte m_metric;
@@ -135,24 +135,24 @@ public abstract class LinkTupleReader {
     }
 
     /**
-     * Free's the current element (returns it to the pool), m_poolIndex must of been set during newing the non abstract
+     * Free's the current element (returns it to the pool), poolIndex must of been set during newing the non abstract
      * object.
      *
      * @param pool
      */
     public void free(LinkTupleReader[] pool) {
-        if (pool[m_poolIndex] != null) {
-            m_next = pool[m_poolIndex];
+        if (pool[poolIndex] != null) {
+            m_next = pool[poolIndex];
         } else {
             m_next = null;
         }
-        pool[m_poolIndex] = this;
+        pool[poolIndex] = this;
     }
 
     public abstract void reset() throws IOException;
 
     public long getDocumentId() {
-        return m_readerDocumentId;
+        return readerDocumentId;
     }
 
     public byte getMetric() {
@@ -175,7 +175,7 @@ public abstract class LinkTupleReader {
      */
     public boolean readToDocId(long docId) throws IOException {
         while (readNext()) {
-            if (docId == m_readerDocumentId) {
+            if (docId == readerDocumentId) {
                 // we found our link
                 return true;
             }

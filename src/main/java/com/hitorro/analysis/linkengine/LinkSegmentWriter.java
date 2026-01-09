@@ -64,8 +64,8 @@ public class LinkSegmentWriter {
     private static Comparator<IndexLink> docIdBasedComparator = new IndexLinkByDocIdComparator();
     BaseFileAccessingObjectFactory factory;
     private BaseFile m_dir;
-    private RLELinkTupleWriter m_rleWriter;
-    private FSOutputStream m_fsos;
+    private RLELinkTupleWriter rleWriter;
+    private FSOutputStream fsos;
     private long m_docId = 0;
     private LinkSegment m_segment;
 
@@ -196,7 +196,7 @@ public class LinkSegmentWriter {
         open();
         while (ilIter.hasNext()) {
             IndexLink il = ilIter.next();
-            write(il.m_fromDocId, il.m_toDocId, il.m_type, il.m_metric, il.m_date);
+            write(il.m_fromDocId, il.toDocId, il.m_type, il.m_metric, il.m_date);
         }
         return close();
     }
@@ -217,29 +217,29 @@ public class LinkSegmentWriter {
         if (fromId > m_docId) {
             if (m_docId != 0) {
                 // new entry  always starts with the docid
-                m_rleWriter.close();
+                rleWriter.close();
             }
             // from id only used during in memory work of initial write.  Not encoded in the disk form as the from ID
             // is determined from 
-            m_fsos.writeLong(fromId);
-            m_segment.setOffset(fromId, m_fsos.getFilePointer());
+            fsos.writeLong(fromId);
+            m_segment.setOffset(fromId, fsos.getFilePointer());
             m_docId = fromId;
         }
 
-        m_rleWriter.writeTuple(toId, type, metric, date);
+        rleWriter.writeTuple(toId, type, metric, date);
         return true;
     }
 
     public void open() throws IOException {
-        m_rleWriter = new RLELinkTupleWriter();
-        m_fsos = m_segment.getOutputStream();
-        m_rleWriter.setOutputStream(m_fsos);
+        rleWriter = new RLELinkTupleWriter();
+        fsos = m_segment.getOutputStream();
+        rleWriter.setOutputStream(fsos);
         m_docId = 0;
     }
 
     public LinkSegment close() throws IOException {
-        m_rleWriter.close();
-        m_fsos.close();
+        rleWriter.close();
+        fsos.close();
         // write the positionals hash table out.
         // note, this need not be a hashtable, it could be an ordered docid, offset pair....or alternatively
         // it could be derived from the postings file itself.
@@ -332,11 +332,11 @@ class IndexLinkRow extends IndexRow {
 
 class IndexReferenceRow extends IndexRow {
     private byte m_type;
-    private byte m_inboundType;
+    private byte inboundType;
 
     public IndexReferenceRow(byte type, byte inboundType) {
         m_type = type;
-        m_inboundType = inboundType;
+        this.inboundType = inboundType;
 
     }
 
@@ -362,7 +362,7 @@ class IndexReferenceRow extends IndexRow {
             IndexLink backwards = new IndexLink();
             backwards.setDate(time);
             backwards.setHashes(toH, fromH);
-            backwards.setType(m_inboundType);
+            backwards.setType(inboundType);
             writer.add(backwards);
         }
     }

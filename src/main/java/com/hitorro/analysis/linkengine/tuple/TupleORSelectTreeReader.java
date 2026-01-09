@@ -42,13 +42,13 @@ public class TupleORSelectTreeReader extends TupleLogicSelectTreeReader {
 
     @Override
     public final boolean readNext() throws IOException {
-        if (m_left.m_readerDocumentId != 0) {
-            if (m_right.m_readerDocumentId != 0) {
-                if (m_left.m_readerDocumentId < m_right.m_readerDocumentId) {
+        if (m_left.readerDocumentId != 0) {
+            if (m_right.readerDocumentId != 0) {
+                if (m_left.readerDocumentId < m_right.readerDocumentId) {
                     // we use the lefts value to pass back
                     takeLeft();
                     m_left.readNext();
-                } else if (m_left.m_readerDocumentId == m_right.m_readerDocumentId) {
+                } else if (m_left.readerDocumentId == m_right.readerDocumentId) {
                     // items same, we should taken in order of type
                     takeLeft();
                     byte lTC = m_left.m_typeCode;
@@ -78,13 +78,13 @@ public class TupleORSelectTreeReader extends TupleLogicSelectTreeReader {
             }
         } else {
             //  we dont have right so we just provide left data!
-            if (m_right.m_readerDocumentId != 0) {
+            if (m_right.readerDocumentId != 0) {
                 takeRight();
                 m_right.readNext();
             } else {
-                m_readerDocumentId = 0;
+                readerDocumentId = 0;
             }
         }
-        return m_readerDocumentId > 0;
+        return readerDocumentId > 0;
     }
 }

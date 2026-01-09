@@ -23,7 +23,6 @@ package com.hitorro.analysis.linkengine.tuple;
 
 import java.io.IOException;
 
-
 /**
  */
 
@@ -34,12 +33,12 @@ public abstract class TupleLogicSelectTreeReader extends LinkTupleReader {
     public void free(LinkTupleReader[] pool) {
         m_left.free(pool);
         m_right.free(pool);
-        if (pool[m_poolIndex] != null) {
-            m_next = pool[m_poolIndex];
+        if (pool[poolIndex] != null) {
+            m_next = pool[poolIndex];
         } else {
             m_next = null;
         }
-        pool[m_poolIndex] = this;
+        pool[poolIndex] = this;
     }
 
     public final void set(LinkTupleReader left, LinkTupleReader right) throws IOException {
@@ -48,14 +47,15 @@ public abstract class TupleLogicSelectTreeReader extends LinkTupleReader {
     }
 
     public void reset() throws IOException {
-        m_readerDocumentId = 0;
+        readerDocumentId = 0;
         m_left.reset();
         m_right.reset();
         primePump();
     }
 
     /**
-     * Set the left and right readers and also state if we want to ignore the deleted entries.
+     * Set the left and right readers and also state if we want to ignore the
+     * deleted entries.
      *
      * @param left
      * @param right
@@ -64,7 +64,7 @@ public abstract class TupleLogicSelectTreeReader extends LinkTupleReader {
     public final void set(LinkTupleReader left, LinkTupleReader right, boolean skipDeletes) {
         m_left = left;
         m_right = right;
-        m_skipDeleted = skipDeletes;
+        this.m_skipDeleted = skipDeletes;
     }
 
     public final void primePump() throws IOException {
@@ -73,14 +73,14 @@ public abstract class TupleLogicSelectTreeReader extends LinkTupleReader {
     }
 
     protected final void takeLeft() {
-        m_readerDocumentId = m_left.m_readerDocumentId;
+        readerDocumentId = m_left.readerDocumentId;
         m_typeCode = m_left.m_typeCode;
         m_date = m_left.m_date;
         m_metric = m_left.m_metric;
     }
 
     protected final void takeRight() {
-        m_readerDocumentId = m_right.m_readerDocumentId;
+        readerDocumentId = m_right.readerDocumentId;
         m_typeCode = m_right.m_typeCode;
         m_date = m_right.m_date;
         m_metric = m_right.m_metric;

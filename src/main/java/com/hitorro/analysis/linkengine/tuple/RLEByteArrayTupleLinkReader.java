@@ -61,7 +61,7 @@ public class RLEByteArrayTupleLinkReader extends RLELinkTupleReader {
 
     public void reset() {
         m_bufferPosition = m_offset;
-        m_readerDocumentId = 0;
+        readerDocumentId = 0;
     }
 
     protected byte readByte() throws IOException {

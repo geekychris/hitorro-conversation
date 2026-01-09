@@ -37,8 +37,8 @@ public class RLEISLinkTupleReader extends RLELinkTupleReader {
     }
 
     public void reset() throws IOException {
-        m_readerDocumentId = 0;
-        m_typeCodeUnmuted = 0;
+        readerDocumentId = 0;
+        typeCodeUnmuted = 0;
         m_typeCode = 0;
         m_is.seek(m_seek);
     }

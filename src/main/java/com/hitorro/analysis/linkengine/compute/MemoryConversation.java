@@ -68,7 +68,7 @@ public class MemoryConversation implements HTSerializable {
 
         mapMCAttributesToConversation(conv);
         // XXX TODO is this correct here?
-        for (ReferringPost rp : this.m_referringPosts)
+        for (ReferringPost rp : this.referringPosts)
         {
             notFirst = getFill(fetch, session, rp.m_hash, conv);
         }
@@ -98,13 +98,13 @@ public class MemoryConversation implements HTSerializable {
     private String m_url;
     private String m_synopsis;
     private String m_primaryPersonality;
-    private String m_primaryPersonalityGuid;
-    private List<ReferringPost> m_referringPosts = new ArrayList<ReferringPost>();
+    private String primaryPersonalityGuid;
+    private List<ReferringPost> referringPosts = new ArrayList<ReferringPost>();
 
     public void dump() {
-        Console.println("guid: %s, hash: %s, title: %s, url: %s, user: %s, userGuid: %s", m_guid, m_hash, m_title, m_url, m_primaryPersonality, m_primaryPersonalityGuid);
+        Console.println("guid: %s, hash: %s, title: %s, url: %s, user: %s, userGuid: %s", m_guid, m_hash, m_title, m_url, m_primaryPersonality, primaryPersonalityGuid);
         Console.println("Synopsis: %s", m_synopsis);
-        for (ReferringPost post : m_referringPosts) {
+        for (ReferringPost post : referringPosts) {
             post.dump();
         }
     }
@@ -138,11 +138,11 @@ public class MemoryConversation implements HTSerializable {
     }
 
     public String getPrimaryPersonalityGuid() {
-        return m_primaryPersonalityGuid;
+        return primaryPersonalityGuid;
     }
 
     public List<ReferringPost> getReferringPosts() {
-        return m_referringPosts;
+        return referringPosts;
     }
 
     public void setPostDetails(Post post) {
@@ -155,7 +155,7 @@ public class MemoryConversation implements HTSerializable {
     }
 
     public void addReferrer(ReferringPost rp) {
-        m_referringPosts.add(rp);
+        referringPosts.add(rp);
     }
 
     /**
@@ -170,16 +170,16 @@ public class MemoryConversation implements HTSerializable {
 
         boolean notFirst = false;
 
-        for (ReferringPost rp : this.m_referringPosts) {
+        for (ReferringPost rp : this.referringPosts) {
             notFirst = fillInRowBlanks(fetch, rp);
         }
 
         boolean foundPrimary = false;
-        for (ReferringPost rp : this.m_referringPosts) {
+        for (ReferringPost rp : this.referringPosts) {
             if (!StringUtil.nullOrEmptyString(rp.m_userGuid)) {
                 foundPrimary = true;
                 this.m_primaryPersonality = rp.m_user;
-                this.m_primaryPersonalityGuid = rp.m_userGuid;
+                this.primaryPersonalityGuid = rp.m_userGuid;
             }
         }
         if (foundPrimary == false) {
@@ -238,7 +238,7 @@ public class MemoryConversation implements HTSerializable {
 
         mapMCAttributesToConversation(conv);
         // XXX TODO is this correct here?
-        for (ReferringPost rp : this.m_referringPosts) {
+        for (ReferringPost rp : this.referringPosts) {
             notFirst = getFill(fetch, session, rp.m_hash, conv);
         }
         if (conv.getPersonalities().size() > 0) {
@@ -370,8 +370,8 @@ public class MemoryConversation implements HTSerializable {
         os.writeString(m_synopsis);
         os.writeLong(m_hash);
         os.writeString(m_primaryPersonality);
-        os.writeString(m_primaryPersonalityGuid);
-        os.writeListOfHTSerializable(m_referringPosts);
+        os.writeString(primaryPersonalityGuid);
+        os.writeListOfHTSerializable(referringPosts);
     }
 
     public void deserialize(HTObjectInputStream os)
@@ -383,8 +383,8 @@ public class MemoryConversation implements HTSerializable {
         m_synopsis = os.readString();
         m_hash = os.readLong();
         m_primaryPersonality = os.readString();
-        m_primaryPersonalityGuid = os.readString();
-        os.readListOfHTSerializable(m_referringPosts);
+        primaryPersonalityGuid = os.readString();
+        os.readListOfHTSerializable(referringPosts);
     }
 
     public int getSerializationVersion() {
