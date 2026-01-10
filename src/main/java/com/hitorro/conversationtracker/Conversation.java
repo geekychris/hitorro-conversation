@@ -44,6 +44,8 @@ import com.hitorro.util.urlparser.URLUtil;
 import com.hitorro.util.urlparser.UrlCollectionStats;
 import org.hibernate.query.Query;
 
+import jakarta.persistence.*;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -61,6 +63,9 @@ import java.util.*;
  * URLs, each with a title.  This is to enable "for more information" kind of links to encyclopedia articles, press
  * releases from our customers, and so on.
  */
+@Entity
+@Table(name = "Conversation")
+@PrimaryKeyJoinColumn(name = "system_id")
 @com.hitorro.util.typesystem.annotation.TypeClassMetaInfo(shortTypeName = com.hitorro.util.typesystem.annotation.TypeClassMetaInfo.Conversation,
         adapters = {@com.hitorro.util.typesystem.annotation.AdapterClassMeta(className = ConversationtRssItem.class, adapterGroup = VersionableObjectRssItem.AdapterGroup)},
         isView = false,
@@ -82,21 +87,64 @@ public class Conversation extends Document {
 
     private static final String ConversationByIdentityHashForum = "select bentry from " + Conversation.class.getName() + " as bentry " +
             "where bentry.identityHash = :hash";
+    
     // transient things
+    @Transient
     private transient boolean isValid = true;
+    
+    @Transient
     private UrlCollectionStats urlCollectionStats = null;
+    
     //persisted things
+    @Column(name = "topicUrl", nullable = false, length = 1024)
     private String m_topicUrl;
+    
+    @Column(name = "synopsis", nullable = false, length = 1024)
     private String m_synopsis;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "conversation_user",
+        joinColumns = @JoinColumn(name = "conversation_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private Set<User> m_personalities;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "primaryPersonality")
     private User m_primaryPersonality;
+    
+    @Column(name = "firstPostDate")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date m_firstPostDate;
+    
+    @Column(name = "lastPostDate")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date m_lastPostDate;
+    
+    @Column(name = "conversationRank", nullable = false)
     private double conversationRank;
+    
+    @Column(name = "detailsGuid", nullable = false, length = 20)
     private String detailsGuid;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "conversation_post",
+        joinColumns = @JoinColumn(name = "conversation_id"),
+        inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
     private Set<Post> m_posts;
+    
+    @Column(name = "fromDate")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fromDate;
+    
+    @Column(name = "toDate")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date toDate;
+    
+    @Column(name = "originalAuthor")
     private String originalAuthor;
     // no persist
     private transient List<GenericKeyValue<String, Double>> m_rankedPostsList = null;
