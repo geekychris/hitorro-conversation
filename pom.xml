@@ -6,7 +6,7 @@
 
     <groupId>com.hitorro</groupId>
     <artifactId>hitorro-conversation</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <packaging>jar</packaging>
 
     <name>Hitorro Conversation</name>
@@ -26,17 +26,17 @@
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-text-core</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-text-persistence</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-basedms</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.1</version>
         </dependency>
 
         <!-- High-Performance Collections -->
