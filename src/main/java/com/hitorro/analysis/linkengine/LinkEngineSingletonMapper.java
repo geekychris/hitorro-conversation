@@ -25,16 +25,15 @@ import com.hitorro.util.basefile.fs.BaseFile;
 import com.hitorro.util.core.Log;
 import com.hitorro.util.core.events.cache.SingletonCache;
 import com.hitorro.util.core.iterator.mappers.BaseMapper;
-import com.hitorro.util.io.resourcecache.basefile.BaseFileResourcePropertyKey;
+import com.hitorro.util.basefile.fs.file.FileFileSystem;
+import com.hitorro.util.core.Env;
 
+import java.io.File;
 import java.io.IOException;
 
 
 public class LinkEngineSingletonMapper extends BaseMapper<Object, LinkEngine> {
     public static final String LinkEngineSingletonCacheEventKey = "LinkEngineSingletonCache";
-    public static final BaseFileResourcePropertyKey PropKey =
-            new BaseFileResourcePropertyKey(LinkEngine.ResourceName, LinkEngine.VersionQuery, "${HT_HOME}/linkindex",
-                    "index.linkindex", "linkindex");
 
     private static final SingletonCache<LinkEngine> s_singleton = new SingletonCache<LinkEngine>(LinkEngineSingletonCacheEventKey, new LinkEngineSingletonMapper());
 
@@ -46,13 +45,11 @@ public class LinkEngineSingletonMapper extends BaseMapper<Object, LinkEngine> {
     }
 
     public LinkEngine apply(Object o) {
-        BaseFile f = PropKey.apply();
-
-        boolean fromCache = PropKey.isInResourceCache(null);
+        // BaseFileResourcePropertyKey removed during cleanup
+        BaseFile f = FileFileSystem.Root.getFile(new File(Env.getHome(), "linkindex").getAbsolutePath());
         LinkEngine le = null;
         try {
             le = new LinkEngine(f);
-            le.setRetrievedFromResourceCache(fromCache);
         } catch (IOException e) {
             Log.util.error("%s %e", e, e);
             return null;

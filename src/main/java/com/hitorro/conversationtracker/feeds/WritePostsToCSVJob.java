@@ -42,9 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 
-/**
- *
- */
+
 public class WritePostsToCSVJob extends Job {
     public static final String JobName = "writeposts";
     private static final String ColumnNames[] = {PostDumpCSVConsumer.TitleColumn,

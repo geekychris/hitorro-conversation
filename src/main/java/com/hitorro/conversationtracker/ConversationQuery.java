@@ -24,7 +24,7 @@ package com.hitorro.conversationtracker;
 import com.hitorro.basedms.session.DMSSession;
 import com.hitorro.basedms.session.DMSSessionFactory;
 import com.hitorro.basedms.session.HibernateQueryResultObjectAdapter;
-import com.hitorro.jsontypesystem.JVS;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.util.commandandcontrol.Command;
 import com.hitorro.util.commandandcontrol.CommandSession;
 import com.hitorro.util.commandandcontrol.Response;
@@ -58,7 +58,7 @@ public class ConversationQuery extends Command {
                     @RespColumn(name = "Guid", lName = "guid")})
     private ResponseShape shape = new ResponseShape();
 
-    public boolean execute(String rawValue, JVS args, Response response, CommandSession cmdSession) {
+    public boolean execute(String rawValue, JsonNode args, Response response, CommandSession cmdSession) {
         String personality = PersonalityProperty.apply(args);
         BaseSession session = DMSSessionFactory.getFactory().getSession();
 

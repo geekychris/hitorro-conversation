@@ -88,7 +88,7 @@ public class RssFeedGenerator extends HttpServlet {
         Map<String, String> paramsTmp = ServletUtil.getArgs(p);
         JVS params = JVSUtils.convertMapToJVS(paramsTmp);
         XWriter rssWriter;
-        if (RssIteratorGenerator.HtmlKey.apply(params)) {
+        if (RssIteratorGenerator.HtmlKey.apply(params.getJsonNode())) {
             rssWriter = new HTMLWriter(params.getJsonNode());
         } else {
             rssWriter = new RssWriter(params.getJsonNode());

@@ -30,7 +30,7 @@ import com.hitorro.basetext.termmatch.Ranker;
 import com.hitorro.basetext.termmatch.RankerResult;
 import com.hitorro.basetext.termmatch.RankerResultRow;
 import com.hitorro.basetext.termmatch.UrlTermMatchQuery;
-import com.hitorro.jsontypesystem.JVS;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.util.commandandcontrol.ano.CommandArgument;
 import com.hitorro.util.commandandcontrol.ano.CommandDef;
 import com.hitorro.util.commandandcontrol.ano.RespColumn;
@@ -60,7 +60,7 @@ public class SimilarityCommand extends com.hitorro.util.commandandcontrol.Comman
                     @RespColumn(name = "Url", lName = "url")})
     private com.hitorro.util.commandandcontrol.ResponseShape header = new com.hitorro.util.commandandcontrol.ResponseShape();
 
-    public boolean execute(String rawValue, JVS args, com.hitorro.util.commandandcontrol.Response response, com.hitorro.util.commandandcontrol.CommandSession session) {
+    public boolean execute(String rawValue, JsonNode args, com.hitorro.util.commandandcontrol.Response response, com.hitorro.util.commandandcontrol.CommandSession session) {
         String url = Url.apply(args);
         /*testConversation(url);
         if (1 == 1)
