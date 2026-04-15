@@ -32,7 +32,7 @@ import com.hitorro.util.json.keys.IntegerProperty;
  * <p/>
  */
 public class MinDescriptionSize implements HTPredicate<RssItemInterface> {
-    public static final IntegerProperty MinKey = new IntegerProperty("minlength", "", 10);
+    public static IntegerProperty MinKey = new IntegerProperty("minlength", "", 10);
     private int minDescriptionTextSize = 200;
 
     public void initForPass() {

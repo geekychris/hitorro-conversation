@@ -35,10 +35,10 @@ import java.util.Iterator;
 
 
 public class LinkEngineIndexerUtil {
-    public static String QueryContentForNesLinksSinkHql = "select cc.guid from Post post join post.contents cc where post.degree <= :a and post.modifiedDate > :b and post.modifiedDate < :c and cc.id in " +
+    public static final String QueryContentForNesLinksSinkHql = "select cc.guid from Post post join post.contents cc where post.degree <= :a and post.modifiedDate > :b and post.modifiedDate < :c and cc.id in " +
             "(select c1.id from Content as c1 left join c1.categories as cat where cat.domain='docparts' and cat.value='reflinksnew')";
 
-    public static String QueryReferenceHql = "select r from Reference r where refType= :a and date > :b and date < :c";
+    public static final String QueryReferenceHql = "select r from Reference r where refType= :a and date > :b and date < :c";
 
     /**
      * @param query
@@ -48,7 +48,7 @@ public class LinkEngineIndexerUtil {
      * @return
      * @throws IOException
      */
-    public static final File retrieveLinks(String query, String date, File dir, String fileExtension) throws IOException {
+    public static File retrieveLinks(String query, String date, File dir, String fileExtension) throws IOException {
         BaseSession q = DMSSessionFactory.getFactory().getSession();
         BaseSession f = DMSSessionFactory.getFactory().getSession();
         Object args[] = new String[1];

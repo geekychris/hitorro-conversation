@@ -168,7 +168,7 @@ public class Conversation extends Document {
         return bl;
     }
 
-    public static long calculateIdentityHash(String link) {
+    public static final long calculateIdentityHash(String link) {
         return FPHash64.getFP(link);
     }
 

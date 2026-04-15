@@ -31,7 +31,7 @@ import java.util.List;
 
 
 public class SpamRemovalRanker implements ConversationRanker {
-    public static final DoubleProperty MaxSingleSourceTLDThreshold =
+    public static DoubleProperty MaxSingleSourceTLDThreshold =
             new DoubleProperty("conversationtracker.conversation.maxtldthreshold",
                     "Maximum amount of urls from a single TLD in a conversation", 0.7);
 

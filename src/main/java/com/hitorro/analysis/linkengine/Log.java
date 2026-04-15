@@ -26,7 +26,7 @@ import com.hitorro.util.log.Logger;
 /**
  */
 public class Log extends com.hitorro.util.core.Log {
-    public static final Logger conversation = Logger.getLogger("ht.conversation");
+    public static Logger conversation = Logger.getLogger("ht.conversation");
 
-    public static final Logger linkengine = Logger.getLogger("ht.analysis.linkengine");
+    public static Logger linkengine = Logger.getLogger("ht.analysis.linkengine");
 }

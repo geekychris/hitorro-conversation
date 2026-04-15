@@ -40,7 +40,7 @@ public class LinkEngineSingletonMapper extends BaseMapper<Object, LinkEngine> {
     public LinkEngineSingletonMapper() {
     }
 
-    public static final SingletonCache<LinkEngine> getSingleton() {
+    public static SingletonCache<LinkEngine> getSingleton() {
         return s_singleton;
     }
 

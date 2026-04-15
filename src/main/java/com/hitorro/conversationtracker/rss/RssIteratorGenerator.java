@@ -89,37 +89,37 @@ public class RssIteratorGenerator {
     public static final String OBKAuthoredDate = "authoredDate";
     public static final String OBKCreatedDate = "createdDate";
 
-    public static final IntegerProperty MaxDegreeKey = new IntegerProperty("maxdegree", "Maximum results to return", 1);
+    public static IntegerProperty MaxDegreeKey = new IntegerProperty("maxdegree", "Maximum results to return", 1);
 
-    public static final StringProperty TitleSearchKey = new StringProperty("title", "title", null);
-    public static final StringProperty BodySearchKey = new StringProperty("body", "body", null);
+    public static StringProperty TitleSearchKey = new StringProperty("title", "title", null);
+    public static StringProperty BodySearchKey = new StringProperty("body", "body", null);
 
-    public static final StringProperty ObjectTypeKey = new StringProperty("objecttype", "objecttype", TypeClassMetaInfo.Post);
+    public static StringProperty ObjectTypeKey = new StringProperty("objecttype", "objecttype", TypeClassMetaInfo.Post);
 
-    public static final StringProperty ForumKey = new StringProperty("forum", "ForumName", "TechOne");
-    public static final StringProperty AuthorKey = new StringProperty("author", "author", null);
-    public static final StringProperty CategoryKey = new StringProperty("category", "author", null);
+    public static StringProperty ForumKey = new StringProperty("forum", "ForumName", "TechOne");
+    public static StringProperty AuthorKey = new StringProperty("author", "author", null);
+    public static StringProperty CategoryKey = new StringProperty("category", "author", null);
 
-    public static final StringProperty CelebKey = new StringProperty("celeb", "Celebrity Name", "Robert");
-    public static final StringProperty AlgorithmKey = new StringProperty("algorithm", "Algorithm name", RssAlgorithm.AlgorithmPostQuery);
-    public static final StringProperty GuidKey = new StringProperty("guid", "guid of a document driven query", null);
-    public static final StringProperty OrderByKey = new StringProperty("orderby", "authoredDate|modfiedDate", OBKAuthoredDate);
+    public static StringProperty CelebKey = new StringProperty("celeb", "Celebrity Name", "Robert");
+    public static StringProperty AlgorithmKey = new StringProperty("algorithm", "Algorithm name", RssAlgorithm.AlgorithmPostQuery);
+    public static StringProperty GuidKey = new StringProperty("guid", "guid of a document driven query", null);
+    public static StringProperty OrderByKey = new StringProperty("orderby", "authoredDate|modfiedDate", OBKAuthoredDate);
 
-    public static final StringProperty UserKey = new StringProperty("user", "Username", null);
+    public static StringProperty UserKey = new StringProperty("user", "Username", null);
 
 
-    public static final BooleanProperty IncludeSubtypeKey = new BooleanProperty("includesubtype", "", false);
+    public static BooleanProperty IncludeSubtypeKey = new BooleanProperty("includesubtype", "", false);
 
-    public static final BooleanProperty DebugKey = new BooleanProperty("debug", "", false);
-    public static final BooleanProperty HtmlKey = new BooleanProperty("html", "", false);
-    public static final BooleanProperty FullKey = new BooleanProperty("full", "", false);
-    public static final IntegerProperty MaxResultsKey = new IntegerProperty("maxresults", "Maximum results to return", 20);
-    public static final IntegerProperty ResultsWindowKey = new IntegerProperty("windownumber", "result window to return", 0);
-    public static final IntegerProperty MaxDaysAgeKey = new IntegerProperty("maxpostage", "maximum age of post", 2);
+    public static BooleanProperty DebugKey = new BooleanProperty("debug", "", false);
+    public static BooleanProperty HtmlKey = new BooleanProperty("html", "", false);
+    public static BooleanProperty FullKey = new BooleanProperty("full", "", false);
+    public static IntegerProperty MaxResultsKey = new IntegerProperty("maxresults", "Maximum results to return", 20);
+    public static IntegerProperty ResultsWindowKey = new IntegerProperty("windownumber", "result window to return", 0);
+    public static IntegerProperty MaxDaysAgeKey = new IntegerProperty("maxpostage", "maximum age of post", 2);
 
-    public static final IntegerProperty TopWordsKey = new IntegerProperty("topwords", "top n terms in text", 0);
+    public static IntegerProperty TopWordsKey = new IntegerProperty("topwords", "top n terms in text", 0);
 
-    public static final ContainsFilter cdataConstraint = new ContainsFilter("<![CDATA[");
+    public static ContainsFilter cdataConstraint = new ContainsFilter("<![CDATA[");
 
 
     private static final Map<String, RssAlgorithm> algorithms = initAlgorithms();

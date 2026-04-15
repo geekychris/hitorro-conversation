@@ -50,7 +50,7 @@ import java.util.List;
 @CommandDef(command = "text.similarity", description = "Test similarity of documents to a fetched page")
 public class SimilarityCommand extends com.hitorro.util.commandandcontrol.Command {
     @CommandArgument(required = true)
-    public static final StringProperty Url = new StringProperty("url", "url to fetch", null);
+    public static StringProperty Url = new StringProperty("url", "url to fetch", null);
 
     @ResponseDefinition(command = "dumpversiontree",
             rowname = "document",

@@ -27,5 +27,5 @@ import com.hitorro.util.log.Logger;
  * <p/>
  */
 public class Log extends com.hitorro.util.core.Log {
-    public static final Logger conversationtracker = Logger.getLogger("ht.conversationtracker");
+    public static Logger conversationtracker = Logger.getLogger("ht.conversationtracker");
 }

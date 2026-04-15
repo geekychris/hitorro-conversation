@@ -103,7 +103,7 @@ public abstract class LinkTupleReader {
      * @param typeCode
      * @return true indicates there is a metric.
      */
-    public static final boolean hasMetric(byte typeCode) {
+    public static boolean hasMetric(byte typeCode) {
         return (typeCode & TypeBit_HasMetric) != 0;
     }
 
@@ -114,11 +114,11 @@ public abstract class LinkTupleReader {
      * @param typeCode
      * @return
      */
-    public static final boolean hasMoreRefs(byte typeCode) {
+    public static boolean hasMoreRefs(byte typeCode) {
         return (typeCode & TypeBit_HasMore) != 0;
     }
 
-    public static final void dumpReader(String title, LinkTupleReader reader) throws IOException {
+    public static void dumpReader(String title, LinkTupleReader reader) throws IOException {
         Console.println(title);
         Console.println();
         while (reader.readNext()) {
