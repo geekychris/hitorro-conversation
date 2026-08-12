@@ -22,6 +22,16 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.hitorro</groupId>
+            <artifactId>hitorro-streams</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hitorro</groupId>
+            <artifactId>hitorro-basefile</artifactId>
+            <version>3.0.1</version>
+        </dependency>
         <!-- Internal Hitorro Dependencies -->
         <dependency>
             <groupId>com.hitorro</groupId>

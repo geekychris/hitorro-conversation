@@ -113,6 +113,6 @@ public class LinkSegment {
     FSOutputStream getOutputStream()
             throws IOException {
         segFile.getParent().mkdir();
-        return new FSOutputStream(segFile);
+        return new FSOutputStream(new java.io.File(segFile.getAbsolutePath()));
     }
 }
