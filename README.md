@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Hitorro Conversation logo" width="180">
+</p>
+
 # Hitorro Conversation
 
 This is the **hitorro-conversation** project, providing conversation tracking, link analysis, and thread discovery for forum posts, blog comments, and social media discussions.
