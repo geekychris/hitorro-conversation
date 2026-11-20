@@ -21,7 +21,7 @@
  */
 package com.hitorro.basedms.xml;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 
 import java.io.IOException;
 import java.io.Writer;

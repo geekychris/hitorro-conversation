@@ -24,7 +24,7 @@ package com.hitorro.conversationtracker;
 import com.hitorro.basedms.session.DMSSession;
 import com.hitorro.basedms.session.DMSSessionFactory;
 import com.hitorro.basedms.session.HibernateQueryResultObjectAdapter;
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.commandandcontrol.Command;
 import com.hitorro.util.commandandcontrol.CommandSession;
 import com.hitorro.util.commandandcontrol.Response;

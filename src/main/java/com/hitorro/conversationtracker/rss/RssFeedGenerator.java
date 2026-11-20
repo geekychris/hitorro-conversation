@@ -22,7 +22,7 @@
 package com.hitorro.conversationtracker.rss;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.typesystem.btadapter.DBBaseAdapterItemCacheFetcher;
 import com.hitorro.base.typesystem.btadapter.rssadapters.VersionableObjectRssItem;
 import com.hitorro.basedms.RssItemCacheProxy;

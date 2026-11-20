@@ -21,7 +21,7 @@
  */
 package com.hitorro.conversationtracker.rss.algorithms;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.analysis.linkengine.LinkEngine;
 import com.hitorro.analysis.linkengine.LinkEngineSingletonMapper;
 import com.hitorro.analysis.linkengine.LinkQueryContext;

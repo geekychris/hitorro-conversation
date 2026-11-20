@@ -21,7 +21,7 @@
  */
 package com.hitorro.conversationtracker.rss.algorithms;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.basetext.termmatch.GuidTermMatchQuery;
 import com.hitorro.basetext.termmatch.Ranker;
 import com.hitorro.basetext.termmatch.RankerResult;
