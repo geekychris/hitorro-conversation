@@ -21,7 +21,7 @@
  */
 package com.hitorro.basedms.xml;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.objects.ExternalContent;
 import com.hitorro.conversationtracker.Log;
 import com.hitorro.conversationtracker.rss.RssIteratorGenerator;

@@ -21,7 +21,7 @@
  */
 package com.hitorro.conversationtracker.rss;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.objects.ExternalContent;
 import com.hitorro.base.objects.ObjectFetcher;
 import com.hitorro.basedms.ObjectFetcherRPC;

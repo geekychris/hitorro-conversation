@@ -21,7 +21,7 @@
  */
 package com.hitorro.conversationtracker.rss;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.basedms.xml.RssItemInterface;
 import com.hitorro.conversationtracker.Log;
 import com.hitorro.util.core.HTAssert;

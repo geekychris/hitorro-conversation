@@ -92,9 +92,9 @@ hitorro-conversation/
 ## Dependencies
 
 ### Internal Hitorro Dependencies (provided scope)
-- `hitorro-text-core` (3.0.0) - Text processing
-- `hitorro-text-persistence` (3.0.0) - Text indexing and search
-- `hitorro-basedms` (3.0.0) - Database persistence
+- `hitorro-text-core` (4.0.0) - Text processing
+- `hitorro-text-persistence` (4.0.0) - Text indexing and search
+- `hitorro-basedms` (4.0.0) - Database persistence
 
 ### External Dependencies
 - **Trove4j** (3.0.3) - High-performance collections
@@ -111,7 +111,7 @@ mvn clean package
 ```
 
 This will create:
-- `target/hitorro-conversation-3.0.0.jar` - Standard JAR
+- `target/hitorro-conversation-4.0.0.jar` - Standard JAR
 - `target/hitorro-conversation-3.0.0-jar-with-dependencies.jar` - Fat JAR with all dependencies
 
 ### Install to Local Repository

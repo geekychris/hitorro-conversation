@@ -21,7 +21,7 @@
  */
 package com.hitorro.conversationtracker.rss.algorithms;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.objects.User;
 import com.hitorro.base.objects.UserMark;
 import com.hitorro.base.objects.UserPreferences;
